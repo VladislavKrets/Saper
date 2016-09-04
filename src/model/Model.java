@@ -11,14 +11,6 @@ public class Model {
         restart();
     }
 
-    public void test() {
-        for (int i = 0; i < getCell().length; i++) {
-            for (int j = 0; j < getCell()[i].length; j++) {
-                System.out.print(getCell()[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
     private void findNumberOfBombs() {
         int count = 0;
         for (int i = 0; i < this.cell.length; i++){
@@ -62,7 +54,7 @@ public class Model {
                 cell[i][j] = setCellNumber(cell[i][j]);
             }
         }
-        test();
+
     }
     private Cell setCellNumber(Cell cell) {
         int cellNumber = 0;
