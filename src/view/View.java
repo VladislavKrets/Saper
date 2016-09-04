@@ -3,7 +3,6 @@ package view;
 import controller.Controller;
 import controller.CellClickButtonListener;
 import model.Cell;
-import model.TimeThread;
 
 import javax.swing.*;
 import java.awt.*;
