@@ -6,13 +6,12 @@ import controller.RestartGameListener;
 
 import javax.swing.*;
 import java.awt.*;
-
 /**
  * Created by lollipop on 03.09.2016.
  */
-public class DefeatView extends JFrame{
+public class WinnerView extends JFrame{
     private Controller controller;
-    public DefeatView(Controller controller) {
+    public WinnerView(Controller controller) {
         this.controller = controller;
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLayout(new GridBagLayout());
@@ -23,17 +22,18 @@ public class DefeatView extends JFrame{
                 return "Сапер";
             }
         });
-        setName("Поражение");
-        JLabel label = new JLabel("<html><div style='text-align: center;'> Поражение </html>");
+        setName("Победа");
+        JLabel label = new JLabel("<html><div style='text-align: center;'> Победа </html>");
         javax.swing.JButton button = new javax.swing.JButton("Ок");
+        button.addActionListener(new RestartGameListener(controller, controller.getView(), this));
         Component[] components = controller.getView().getPanel().getComponents();
         JButton jButton;
         for(int i = 0; i < components.length; i++) {
             jButton = (JButton) components[i];
             jButton.setEnabled(false);
         }
-        button.addActionListener(new RestartGameListener(controller, controller.getView(), this));
-        /*controller.getModel().restart();
+        /*
+        controller.getModel().restart();
         controller.getView().reGame();*/
         addWindowListener(new DefeatWinnerWindowListener(controller, this));
         add(label, new GridBagConstraints(0, 0, 3, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
@@ -42,6 +42,4 @@ public class DefeatView extends JFrame{
                 new Insets(2, 2, 2, 2), 0, 0));
         setVisible(true);
     }
-
-
 }

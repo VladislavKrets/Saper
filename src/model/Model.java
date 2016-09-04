@@ -5,21 +5,33 @@ package model;
  */
 public class Model {
     private Cell[][] cell = new Cell[9][9];
+    private int countOfBombs = 0;
 
     public Model() {
-        fillCells();
-        setCellNumbers();
+        restart();
     }
 
-    /*public static void main(String[] args) {
-        Model main = new Model();
-        for (int i = 0; i < main.getCell().length; i++) {
-            for (int j = 0; j < main.getCell()[i].length; j++) {
-                System.out.print(main.getCell()[i][j] + " ");
+    public void test() {
+        for (int i = 0; i < getCell().length; i++) {
+            for (int j = 0; j < getCell()[i].length; j++) {
+                System.out.print(getCell()[i][j] + " ");
             }
             System.out.println();
         }
-    }*/
+    }
+    private void findNumberOfBombs() {
+        int count = 0;
+        for (int i = 0; i < this.cell.length; i++){
+            for (int j = 0; j < this.cell[i].length; j++) {
+                if (cell[i][j].isBomb()) count++;
+            }
+        }
+        countOfBombs = count;
+    }
+
+    public int getCountOfBombs() {
+        return countOfBombs;
+    }
 
     public void fillCells() {
         int random;
@@ -33,8 +45,13 @@ public class Model {
                 this.cell[i][j] = cell;
             }
         }
+        findNumberOfBombs();
     }
 
+    public void restart() {
+        fillCells();
+        setCellNumbers();
+    }
     public Cell[][] getCell() {
         return cell;
     }
@@ -45,6 +62,7 @@ public class Model {
                 cell[i][j] = setCellNumber(cell[i][j]);
             }
         }
+        test();
     }
     private Cell setCellNumber(Cell cell) {
         int cellNumber = 0;
@@ -84,30 +102,4 @@ public class Model {
         return null;
     }
 
-    /**
-     * Created by lollipop on 02.09.2016.
-     */
-    public static class Cell {
-        private boolean isBomb = false;
-        private int bombsNumber = 0;
-        public boolean isBomb() {
-            return isBomb;
-        }
-
-        public void setBomb(boolean bomb) {
-            isBomb = bomb;
-        }
-
-        public int getBombsNumber() {
-            return bombsNumber;
-        }
-
-        public void setBombsNumber(int bombsNumber) {
-            this.bombsNumber = bombsNumber;
-        }
-
-        public String toString() {
-            return isBomb() ? "*" : "" + bombsNumber;
-        }
-    }
 }
