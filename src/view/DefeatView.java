@@ -33,8 +33,7 @@ public class DefeatView extends JFrame{
             jButton.setEnabled(false);
         }
         button.addActionListener(new RestartGameListener(controller, controller.getView(), this));
-        /*controller.getModel().restart();
-        controller.getView().reGame();*/
+
         addWindowListener(new DefeatWinnerWindowListener(controller, this));
         add(label, new GridBagConstraints(0, 0, 3, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(2, 2, 2, 2), 0, 0));

@@ -38,7 +38,6 @@ public class View extends JFrame {
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
                 view.JButton button = new view.JButton(j, i);
-              //button.addActionListener(new CellListener(controller, button, panel, i, j));
                 button.setText(" ");
                 button.setSize(44, 26);
                 button.setFocusable(false);

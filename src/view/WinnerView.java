@@ -32,9 +32,6 @@ public class WinnerView extends JFrame{
             jButton = (JButton) components[i];
             jButton.setEnabled(false);
         }
-        /*
-        controller.getModel().restart();
-        controller.getView().reGame();*/
         addWindowListener(new DefeatWinnerWindowListener(controller, this));
         add(label, new GridBagConstraints(0, 0, 3, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(2, 2, 2, 2), 0, 0));
